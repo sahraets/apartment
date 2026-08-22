@@ -1,0 +1,61 @@
+:root {
+  /* Lys modus (standard, og fallback før JS har kjørt) */
+  --bg: #f4f7f2;
+  --panel: #ffffff;
+  --border: #d9e1d4;
+  --track: #e6ece1;
+  --text: #1f2a22;
+  --muted: #5c6b60;
+  --accent: #3f8f6f;
+  --warn: #b8860b;
+  --danger: #c0475a;
+  color-scheme: light;
+}
+
+/* Følger systeminnstillingen helt til brukeren har trykket på bryteren. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14121c;
+    --panel: #1e1b2b;
+    --border: #322c47;
+    --track: #2a2438;
+    --text: #ece9f5;
+    --muted: #9a92b5;
+    --accent: #6ee7a8;
+    --warn: #f5c95b;
+    --danger: #f2707f;
+    color-scheme: dark;
+  }
+}
+
+/* Eksplisitt valg fra bryteren — vinner uansett hva systemet sier. */
+:root[data-theme="dark"] {
+  --bg: #14121c;
+  --panel: #1e1b2b;
+  --border: #322c47;
+  --track: #2a2438;
+  --text: #ece9f5;
+  --muted: #9a92b5;
+  --accent: #6ee7a8;
+  --warn: #f5c95b;
+  --danger: #f2707f;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}

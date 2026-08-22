@@ -1,0 +1,32 @@
+.toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+  border-radius: 4px;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.toggle:hover {
+  border-color: var(--accent);
+}
+
+.icon {
+  display: none;
+  line-height: 1;
+}
+
+/* Mørkt tema: vis sola (den tar deg tilbake til lyst). */
+:global(html[data-theme="dark"]) .sun {
+  display: inline;
+}
+
+/* Lyst tema — og tilfellet der skriptet ikke rakk å sette noe tema. */
+:global(html:not([data-theme="dark"])) .moon {
+  display: inline;
+}

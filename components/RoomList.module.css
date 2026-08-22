@@ -1,0 +1,233 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.message {
+  color: var(--muted);
+}
+
+.summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: var(--panel);
+  border: 2px solid var(--border);
+  border-radius: 4px;
+}
+
+.summaryLabel {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.summaryValue {
+  font-size: 1.25rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.rooms {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.room {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1rem 1.25rem;
+  background: var(--panel);
+  border: 2px solid var(--border);
+  border-radius: 4px;
+}
+
+.roomHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.roomName {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.roomNumbers {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.roomDescription {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.bar {
+  height: 10px;
+  background: var(--track);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  background: var(--accent);
+  transition: width 200ms ease;
+}
+
+.bar[data-tone="tight"] .barFill {
+  background: var(--warn);
+}
+
+.bar[data-tone="over"] .barFill {
+  background: var(--danger);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin: 0;
+}
+
+.stats dt {
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.stats dd {
+  margin: 0;
+  font-size: 0.95rem;
+  font-variant-numeric: tabular-nums;
+}
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  list-style: none;
+  margin: 0.25rem 0 0;
+  padding: 0.6rem 0 0;
+  border-top: 2px solid var(--border);
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.itemName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.itemStatus {
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.05rem 0.45rem;
+}
+
+.itemStatus[data-status="bought"] {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.itemStatus[data-status="ordered"] {
+  color: var(--warn);
+  border-color: var(--warn);
+}
+
+.itemPrice {
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.addButton {
+  align-self: flex-start;
+  padding: 0.35rem 0.75rem;
+  font: inherit;
+  font-size: 0.85rem;
+  color: var(--muted);
+  background: transparent;
+  border: 2px dashed var(--border);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.addButton:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.remove {
+  padding: 0 0.3rem;
+  font: inherit;
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--muted);
+  background: transparent;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  opacity: 0.55;
+}
+
+.remove:hover,
+.remove:focus-visible {
+  color: var(--danger);
+  opacity: 1;
+}
+
+.confirm {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.confirmYes,
+.confirmNo {
+  padding: 0.1rem 0.4rem;
+  font: inherit;
+  font-size: 0.75rem;
+  border-radius: 3px;
+  cursor: pointer;
+  background: transparent;
+}
+
+.confirmYes {
+  color: var(--danger);
+  border: 1px solid var(--danger);
+}
+
+.confirmNo {
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+
+.confirmYes:disabled,
+.confirmNo:disabled {
+  opacity: 0.6;
+  cursor: default;
+}

@@ -1,0 +1,16 @@
+.main {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+.title {
+  margin: 0 0 0.25rem;
+  font-size: 1.75rem;
+  letter-spacing: 0.02em;
+}
+
+.lead {
+  margin: 0 0 2rem;
+  color: var(--muted);
+}
