@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Leilighet-spillet",
+  title: "Planlegging for leiligheten vår",
   description: "Pixel-art flytteplanlegger for to samboere",
 };
 
