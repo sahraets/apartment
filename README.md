@@ -48,15 +48,6 @@ før Next 16) står foran alt: uten en gyldig økt sendes sider til `/login`, og
 API-kall får `401` — også `POST /api/items`, så ingen kan skrive utenom
 innloggingen.
 
-Etter riktig passord får nettleseren en `httpOnly`-cookie som varer i 30 dager.
-Cookien inneholder bare utløpstidspunktet og en HMAC av det, signert med selve
-passordet (`server/auth/session.ts`). Ingen kan forfalske en økt uten å kjenne
-passordet, og bytter du `APP_PASSWORD`, blir alle gamle økter ugyldige av seg
-selv.
-
-Passordet ligger bare i miljøvariabelen — det har ingen `NEXT_PUBLIC_`-prefiks,
-så det sendes aldri til nettleseren.
-
 ## Sånn henger det sammen
 
 Data går alltid samme vei, og hvert lag kjenner bare laget under seg:
