@@ -13,7 +13,7 @@ const globalRef = globalThis as typeof globalThis & {
   __leilighetRepositories?: Repositories;
 };
 
-const usingSupabase = Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL);
+const usingSupabase = Boolean(process.env.SUPABASE_URL);
 
 /**
  * Eneste stedet som bestemmer hvilken datakilde appen kjører mot.

@@ -16,22 +16,7 @@ npm run dev
 
 Appen kjører på http://localhost:3000.
 
-Uten Supabase-variablene starter appen på mockdata i minnet — fint for å prøve
-seg fram, men alt du legger inn forsvinner når serveren restarter. `.env.local`:
 
-```
-APP_PASSWORD=...
-NEXT_PUBLIC_SUPABASE_URL=...
-NEXT_PUBLIC_SUPABASE_ANON_KEY=...
-```
-
-`APP_PASSWORD` er passordet som slipper deg inn (se [Passord](#passord)) og må
-settes — uten den er appen stengt, ikke åpen.
-
-Migrasjonene i `supabase/migrations/` setter opp `items`-tabellen. `rooms` har
-ingen migrasjon ennå — den tabellen finnes bare i det kjørende Supabase-prosjektet,
-så et helt nytt prosjekt må få den satt opp for hånd først. I mock-modus kommer
-rom og ting fra `server/repositories/mockStore.ts`.
 
 Andre skript:
 
@@ -40,13 +25,6 @@ npm run build   # produksjonsbygg
 npm run start   # kjører produksjonsbygget
 npm run lint    # eslint
 ```
-
-## Passord
-
-Appen har ett delt passord og ingen brukerkontoer. `proxy.ts` (het `middleware.ts`
-før Next 16) står foran alt: uten en gyldig økt sendes sider til `/login`, og
-API-kall får `401` — også `POST /api/items`, så ingen kan skrive utenom
-innloggingen.
 
 ## Sånn henger det sammen
 
@@ -68,16 +46,6 @@ UI / spill  →  client-service  →  API-route  →  server-service  →  repos
 | `types/` | Delte modeller (`Room`, `Item`, `Budget`, møbeltyper). Kjenner ikke til datakilden. |
 | `supabase/` | SQL-migrasjoner. |
 
-Et par ting som er verdt å vite:
-
-- **Budsjett lagres aldri, det regnes ut.** `Budget` er alltid derivert fra
-  tingene i rommet, så tallene i panelet og i topplinja kan ikke komme i utakt.
-  Etter en lagring henter UI-et rom og ting på nytt i stedet for å telle selv.
-- **`item.kind` styrer kartet.** En ting med møbeltype tegnes i spillet; en ting
-  uten vises bare i lista. Størrelse og farge per type ligger i `game/furniture.ts`.
-- **Repository-byttet er poenget med lagdelingen.** Mock og Supabase
-  implementerer samme kontrakt (`server/repositories/types.ts`), så ingenting
-  over repository-laget merker hvilken som er i bruk.
 
 ## Bruk
 

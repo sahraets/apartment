@@ -7,12 +7,20 @@ import type {
   RoomRepository,
 } from "./types";
 
+/**
+ * Variablene har med vilje ingen `NEXT_PUBLIC_`-prefiks. Anon-nøkkelen er den
+ * eneste nøkkelen appen har mot Supabase, og RLS-policyen på `items` gir anon
+ * full skrivetilgang — så nøkkelen er en credential, ikke offentlig info. Uten
+ * prefiks nekter Next å bygge hvis noen senere leser dem fra en klientkomponent,
+ * i stedet for å inline nøkkelen i en JS-bundel som leveres uten innlogging.
+ * Derfor: all Supabase-tilgang går gjennom API-rutene.
+ */
 function getClient(): SupabaseClient {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_ANON_KEY;
   if (!url || !key) {
     throw new Error(
-      "Supabase-miljøvariabler mangler (NEXT_PUBLIC_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_ANON_KEY)",
+      "Supabase-miljøvariabler mangler (SUPABASE_URL / SUPABASE_ANON_KEY)",
     );
   }
   return createClient(url, key);
